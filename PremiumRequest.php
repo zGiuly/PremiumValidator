@@ -52,4 +52,16 @@ class PremiumRequest
             return "NO";
         }
     }
+    /** @inheritdoc Logger */
+    public function Logger($text = null, $type = "json", $data = []){
+        if($type == "json"){
+            if(!empty($data)) {
+                file_put_contents("data.json", json_encode($data));
+            }else{
+                return null;
+            }
+        }else if($type == "log"){
+            file_put_contents("data.log", $text);
+        }
+    }
 }
